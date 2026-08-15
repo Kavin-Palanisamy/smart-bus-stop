@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Smart Bus Driver</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<style>
+body{font-family:Arial;background:#eef2ff;display:flex;justify-content:center;align-items:center;height:100vh;}
+.box{background:#fff;padding:25px;border-radius:12px;width:320px;box-shadow:0 0 15px rgba(0,0,0,.2)}
+h2{text-align:center;color:#1e2a78}
+label{margin-top:12px;display:block;font-weight:bold}
+select,input,button{width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ccc}
+button{background:#1e2a78;color:#fff;font-size:16px;margin-top:15px;border:none}
+#msg{text-align:center;margin-top:12px;font-weight:bold}
+</style>
+</head>
+
+<body>
+<div class="box">
+<h2>Driver Delay Update</h2>
+
+<label>Select Bus</label>
+<select id="bus">
+<option value="">Select</option>
+<option value="bus_23">Bus 23</option>
+<option value="bus_45">Bus 45</option>
+<option value="bus_78">Bus 78</option>
+<option value="bus_115">Bus 115</option>
+</select>
+
+<label>Select Stop</label>
+<select id="stop">
+<option value="stop1">Stop 1</option>
+<option value="stop2">Stop 2</option>
+</select>
+
+<label>Delay (minutes)</label>
+<input type="number" id="delay" placeholder="Enter delay">
+
+<button onclick="update()">Update</button>
+<div id="msg"></div>
+</div>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDVWgPJ6m45_5MtIoco3PB3lceOrNUlDaE",
+  authDomain: "advancedone-f4c98.firebaseapp.com",
+  databaseURL: "https://advancedone-f4c98-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "advancedone-f4c98",
+  storageBucket: "advancedone-f4c98.firebasestorage.app",
+  messagingSenderId: "511948107825",
+  appId: "1:511948107825:web:9c67b15e048118e6c86510",
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+function update(){
+  let bus = document.getElementById("bus").value;
+  let stop = document.getElementById("stop").value;
+  let d = parseInt(document.getElementById("delay").value);
+  let msg = document.getElementById("msg");
+
+  if(!bus || isNaN(d)){
+    msg.innerHTML = "Enter all fields";
+    msg.style.color = "red";
+    return;
+  }
+
+  let stops = ["stop1","stop2"];
+  let start = stops.indexOf(stop);
+
+  // Update delay for selected stop & next stops
+  for(let i = start; i < stops.length; i++){
+    db.ref("smart_bus_stop/buses/" + bus + "/stops/" + stops[i] + "/delay")
+      .set(d);
+  }
+
+  // Update bus status
+  db.ref("smart_bus_stop/buses/" + bus + "/status")
+    .set(d > 0 ? "Delayed" : "On the way");
+
+  msg.innerHTML = "Delay Updated Successfully";
+  msg.style.color = "green";
+}
+</script>
+
+</body>
+</html>
