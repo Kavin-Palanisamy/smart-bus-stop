@@ -1,4 +1,3 @@
-# smart-bus-stop
 # 🚌 Smart Bus Stop
 
 An IoT-based Smart Bus Stop system that provides passengers with real-time bus information through an LCD display. The system uses an **ESP8266** to connect to the internet and retrieve bus information from **Firebase Realtime Database**.
@@ -19,7 +18,6 @@ The ESP8266 connects to Firebase through Wi-Fi, retrieves the available bus info
 
 Passengers at conventional bus stops may face difficulties such as:
 
-* Lack of real-time bus information
 * Uncertainty about bus timings
 * No information about delays
 * Dependence on static timetables
@@ -96,7 +94,6 @@ The Smart Bus Stop uses IoT technology to provide dynamic bus information.
 * **ESP8266**
 * **Firebase Realtime Database**
 * **Wi-Fi**
-* **Git & GitHub**
 
 ---
 
@@ -112,37 +109,6 @@ The system works in the following sequence:
 6. Bus number, route, timing, and status are displayed on the LCD.
 7. The LCD automatically rotates through the available buses.
 8. When a bus is delayed, the corresponding delay/status information can be displayed.
-
----
-
-## 🗄️ Firebase Database Structure
-
-The project uses Firebase Realtime Database to store bus information.
-
-Example structure:
-
-```json
-{
-  "buses": {
-    "bus001": {
-      "number": "12A",
-      "route": "Dindigul - Palani",
-      "time": "10:30 AM",
-      "status": "On Time",
-      "delay": 0
-    },
-    "bus002": {
-      "number": "15",
-      "route": "Dindigul - Batlagundu",
-      "time": "10:45 AM",
-      "status": "Delayed",
-      "delay": 10
-    }
-  }
-}
-```
-
-> The above is an example database structure. Replace it with the actual structure used in the project.
 
 ---
 
@@ -168,35 +134,6 @@ The display can automatically change between different buses.
 
 ---
 
-## 📁 Project Structure
-
-```text
-smart-bus-stop/
-│
-├── README.md
-├── .gitignore
-│
-├── firmware/
-│   └── smart_bus_stop.ino
-│
-├── firebase/
-│   └── database_structure.json
-│
-├── circuit/
-│   ├── block_diagram.png
-│   └── circuit_diagram.png
-│
-├── images/
-│   ├── project-overview.jpg
-│   ├── prototype.jpg
-│   ├── lcd-display.jpg
-│   └── firebase-dashboard.jpg
-│
-└── docs/
-    └── components.md
-```
-
----
 
 ## ⚙️ Installation & Setup
 
@@ -248,37 +185,6 @@ Open the Serial Monitor to check:
 
 ---
 
-## 🔐 Security
-
-Sensitive information should **not** be committed to the repository.
-
-Do not upload:
-
-```text
-Wi-Fi passwords
-Firebase passwords
-Authentication tokens
-Private API keys
-Secret credentials
-```
-
-Use placeholder values or a local configuration file that is included in `.gitignore`.
-
----
-
-## 🧪 Testing
-
-The system can be tested by:
-
-1. Connecting the ESP8266 to Wi-Fi.
-2. Updating bus information in Firebase.
-3. Checking whether the ESP8266 receives the updated information.
-4. Verifying the information displayed on the LCD.
-5. Testing multiple buses.
-6. Testing different bus statuses such as `On Time` and `Delayed`.
-7. Checking automatic switching between buses.
-
----
 
 ## 📈 Future Improvements
 
@@ -311,39 +217,6 @@ The concept can be extended to:
 
 ---
 
-## 📷 Project Images
-
-### Prototype
-
-Add your project image here:
-
-```markdown
-![Smart Bus Stop Prototype](images/project-overview.jpg)
-```
-
-### LCD Display
-
-```markdown
-![LCD Display](images/lcd-display.jpg)
-```
-
-### Firebase Database
-
-```markdown
-![Firebase Database](images/firebase-dashboard.jpg)
-```
-
----
-
-## 🎥 Project Demo
-
-Add your project demonstration video link here.
-
-```text
-Coming soon...
-```
-
----
 
 ## 📚 Learning Outcomes
 
