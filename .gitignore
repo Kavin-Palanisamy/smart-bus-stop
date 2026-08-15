@@ -1,0 +1,37 @@
+# Arduino
+
+*.elf
+*.hex
+*.eep
+*.bin
+*.map
+
+# Arduino build folders
+
+build/
+.build/
+
+# Temporary Arduino files
+
+*.tmp
+*.bak
+
+# IDE files
+
+.vscode/
+.idea/
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Credentials / private configuration
+
+secrets.h
+credentials.h
+config_private.h
+
+# Firebase/private configuration
+
+firebase_private.json
