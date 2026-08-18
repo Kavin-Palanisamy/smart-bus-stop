@@ -4,7 +4,7 @@ An IoT-based Smart Bus Stop Display System built using **ESP8266 NodeMCU, Fireba
 
 The system retrieves bus information from Firebase through Wi-Fi and displays current bus timings, delay information and upcoming buses automatically.
 
----
+--
 
 ## 📌 Project Overview
 
